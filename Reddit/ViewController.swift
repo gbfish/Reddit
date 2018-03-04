@@ -14,12 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         fetchData(success: {
-            print("success")
             DispatchQueue.main.async {
-                
+                self.tableView.reloadData()
             }
-            
-            print("cellDataArray = \(self.cellDataArray)")
         })
     }
     
@@ -40,7 +37,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Updata local data
+    // MARK: - Local data
     
     private struct CellData {
         let title: String
@@ -69,8 +66,33 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - TableView
     
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.estimatedRowHeight = 44.0
+            tableView.rowHeight = UITableViewAutomaticDimension
+        }
+    }
+}
+
+extension ViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellDataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath)
+        if let homeTableViewCell = cell as? HomeTableViewCell {
+            let cellData = cellDataArray[indexPath.row]
+            homeTableViewCell.update(title: cellData.title, author: cellData.author, created: "\(cellData.created)", numberOfComments: String(cellData.numberOfComments))
+        }
+        return cell
+    }
 }
 
