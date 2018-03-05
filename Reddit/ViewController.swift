@@ -43,8 +43,10 @@ class ViewController: UIViewController {
         let title: String
         let author: String
         let created: Int
-        let thumbnail: String
         let numberOfComments: Int
+        let thumbnail: String
+        let thumbnailWidth: Int
+        let thumbnailHeight: Int
     }
     
     private var cellDataArray = [CellData]()
@@ -52,14 +54,18 @@ class ViewController: UIViewController {
     private func updateData(json: NSDictionary) {
         if let data = json["data"] as? NSDictionary, let children = data["children"] as? NSArray {
             for child in children {
+//                print("child = \(child)")
                 if let childDictionary = child as? NSDictionary {
                     if let data = childDictionary["data"] as? NSDictionary,
                         let title = data["title"] as? String,
                         let author = data["author"] as? String,
                         let created = data["created"] as? Int,
+                        let numberOfComments = data["num_comments"] as? Int,
                         let thumbnail = data["thumbnail"] as? String,
-                        let numberOfComments = data["num_comments"] as? Int {
-                        cellDataArray.append(CellData(title: title, author: author, created: created, thumbnail: thumbnail, numberOfComments: numberOfComments))
+                        let thumbnailWidth = data["thumbnail_width"] as? Int,
+                        let thumbnailHeight = data["thumbnail_height"] as? Int {
+                        let cellData = CellData(title: title, author: author, created: created, numberOfComments: numberOfComments, thumbnail: thumbnail, thumbnailWidth: thumbnailWidth, thumbnailHeight: thumbnailHeight)
+                        cellDataArray.append(cellData)
                     }
                 }
             }
@@ -90,9 +96,15 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath)
         if let homeTableViewCell = cell as? HomeTableViewCell {
             let cellData = cellDataArray[indexPath.row]
-            homeTableViewCell.update(title: cellData.title, author: cellData.author, created: "\(cellData.created)", numberOfComments: String(cellData.numberOfComments))
+            homeTableViewCell.update(title: cellData.title, author: cellData.author, created: "\(cellData.created)", numberOfComments: String(cellData.numberOfComments), thumbnail: cellData.thumbnail, thumbnailWidth: cellData.thumbnailWidth, thumbnailHeight: cellData.thumbnailHeight)
         }
         return cell
     }
 }
 
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
