@@ -14,6 +14,7 @@
 		963E6468204B556700E2C826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963E6467204B556700E2C826 /* Assets.xcassets */; };
 		963E646B204B556700E2C826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963E6469204B556700E2C826 /* LaunchScreen.storyboard */; };
 		963E6473204CB2D400E2C826 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E6472204CB2D400E2C826 /* HomeTableViewCell.swift */; };
+		963E6475204CC9E300E2C826 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E6474204CC9E300E2C826 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		963E646A204B556700E2C826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963E646C204B556700E2C826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		963E6472204CB2D400E2C826 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		963E6474204CC9E300E2C826 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		A91515D15752A650B7547213 /* Pods-Reddit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit/Pods-Reddit.release.xcconfig"; sourceTree = "<group>"; };
 		E355E86088EE94E0E747D483 /* Pods-Reddit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reddit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reddit/Pods-Reddit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				963E6460204B556700E2C826 /* AppDelegate.swift */,
 				963E6462204B556700E2C826 /* ViewController.swift */,
 				963E6472204CB2D400E2C826 /* HomeTableViewCell.swift */,
+				963E6474204CC9E300E2C826 /* ImageViewController.swift */,
 				963E6464204B556700E2C826 /* Main.storyboard */,
 				963E6467204B556700E2C826 /* Assets.xcassets */,
 				963E6469204B556700E2C826 /* LaunchScreen.storyboard */,
@@ -226,6 +229,7 @@
 			files = (
 				963E6473204CB2D400E2C826 /* HomeTableViewCell.swift in Sources */,
 				963E6463204B556700E2C826 /* ViewController.swift in Sources */,
+				963E6475204CC9E300E2C826 /* ImageViewController.swift in Sources */,
 				963E6461204B556700E2C826 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

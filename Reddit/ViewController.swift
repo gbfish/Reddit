@@ -80,6 +80,18 @@ class ViewController: UIViewController {
             tableView.rowHeight = UITableViewAutomaticDimension
         }
     }
+    
+    // MARK: - Segue
+    
+    private var selectedIndex = 0
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Load Image" {
+            if let imageViewController = segue.destination as? ImageViewController {
+                imageViewController.imageURL = cellDataArray[selectedIndex].thumbnail
+            }
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -105,6 +117,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "Load Image", sender: nil)
     }
 }
