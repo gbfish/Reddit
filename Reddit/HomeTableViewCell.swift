@@ -20,7 +20,7 @@ class HomeTableViewCell: UITableViewCell {
     func update(title: String, author: String, created: String, numberOfComments: String, thumbnail: String, thumbnailWidth: Int, thumbnailHeight: Int) {
         titleLabel.text = "Title: \(title)"
         authorLabel.text = "Author: \(author)"
-        createdLabel.text = created
+        
         numberOfCommentsLabel.text = "Number of comments: \(numberOfComments)"
         
         if let thumbnailURL = URL(string: thumbnail) {
@@ -31,6 +31,18 @@ class HomeTableViewCell: UITableViewCell {
                     }
                 }
                 }.resume()
+        }
+        if let timeInterval = TimeInterval(created) {
+            let date = Date(timeIntervalSince1970: timeInterval)
+            let dateComponents = Calendar.current.dateComponents(Set<Calendar.Component>([.day, .hour]), from: Date(), to: date)
+            
+            var timeString = ""
+            if let day = dateComponents.day, day != 0 {
+                timeString = timeString + "\(day) day" + (day > 1 ? "s " : " ")
+            } else if let hour = dateComponents.hour, hour != 0 {
+                timeString = timeString + "\(hour) hour" + (hour > 1 ? "s" : "")
+            }
+            createdLabel.text = timeString == "" ? "now" : timeString + " ago"
         }
     }
 }

@@ -54,7 +54,6 @@ class ViewController: UIViewController {
     private func updateData(json: NSDictionary) {
         if let data = json["data"] as? NSDictionary, let children = data["children"] as? NSArray {
             for child in children {
-//                print("child = \(child)")
                 if let childDictionary = child as? NSDictionary {
                     if let data = childDictionary["data"] as? NSDictionary,
                         let title = data["title"] as? String,
@@ -70,6 +69,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        cellDataArray.sort(by: { $0.created < $1.created })
     }
     
     // MARK: - TableView
